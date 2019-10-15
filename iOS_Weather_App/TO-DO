@@ -7,3 +7,51 @@ TO-DO LIST:
 - Selecting a forecast should display more information about the weather for that day, along with a random image of the city matching the zip code.
 
 - The user can favorite the image, then view a list of all of their favorited images.
+
+
+
+There should be 3 Main View Controllers
+- The main weather view controller
+- The weather detail view controller (with city pic)
+- The favorite images view controller
+
+
+The MAIN view controller should have:
+- A CollectionView to show the forecasts
+- A Label that names the city for the forecast
+- A TextField for the user to enter the zip code
+- Selecting a collection view cell should segue to a weather detail view controller
+
+
+The WEATHER detail view controller should have:
+- A Label naming the city and the forecast date
+- A random image of the city
+- A Label with a longer description of the weather
+- Additional information about the weather including the high, low, sunrise, sunset, windspeed and precipitation
+- Selecting the "Save" bar button item should save the image to your favorites and present an alert view informing the user.
+
+
+The FAVORITE images view controller should have:
+- A table view that contains all of the images that have been favorited.
+The image at the top should be the most recently favorited image.
+
+
+Persistence
+- Use UserDefaults to store the most recently searched zip code
+- Use FileManager to store the images to disk
+
+
+Programmatic UI
+- You must make at least one of your View Controller without a Storyboard or xib file, building the UI and constraints fully programmatically.
+
+
+Endpoints
+- Dark Sky API
+- Pixabay API
+
+
+Bonus Ideas
+- Allow the user to search by the cityname or zipcode
+- Allow the user to toggle whether the displays should be US or Metric. Persist this to UserDefaults
+- Add animations
+

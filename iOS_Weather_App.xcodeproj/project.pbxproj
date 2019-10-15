@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		EC1182D0235501EF00391131 /* TO-DO in Resources */ = {isa = PBXBuildFile; fileRef = EC1182CF235501EF00391131 /* TO-DO */; };
 		EC1182D2235503AD00391131 /* ZipCodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1182D1235503AD00391131 /* ZipCodeHelper.swift */; };
+		EC1182D52356224100391131 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1182D42356224100391131 /* Weather.swift */; };
+		EC1182D9235622A400391131 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1182D8235622A400391131 /* NetworkHelper.swift */; };
 		ECD45D7523542010004F1C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD45D7423542010004F1C15 /* AppDelegate.swift */; };
 		ECD45D7723542010004F1C15 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD45D7623542010004F1C15 /* SceneDelegate.swift */; };
 		ECD45D7923542010004F1C15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD45D7823542010004F1C15 /* ViewController.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		EC1182CF235501EF00391131 /* TO-DO */ = {isa = PBXFileReference; lastKnownFileType = text; path = "TO-DO"; sourceTree = "<group>"; };
 		EC1182D1235503AD00391131 /* ZipCodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCodeHelper.swift; sourceTree = "<group>"; };
+		EC1182D42356224100391131 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		EC1182D8235622A400391131 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		ECD45D7123542010004F1C15 /* iOS_Weather_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Weather_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD45D7423542010004F1C15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECD45D7623542010004F1C15 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC1182D32356222800391131 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				ECD45D7423542010004F1C15 /* AppDelegate.swift */,
+				ECD45D7623542010004F1C15 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		EC1182D62356228200391131 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ECD45D7823542010004F1C15 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		EC1182D72356228A00391131 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EC1182D42356224100391131 /* Weather.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EC1182DA235622A800391131 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EC1182D8235622A400391131 /* NetworkHelper.swift */,
+				EC1182D1235503AD00391131 /* ZipCodeHelper.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		ECD45D6823542010004F1C15 = {
 			isa = PBXGroup;
 			children = (
@@ -83,12 +121,12 @@
 		ECD45D7323542010004F1C15 /* iOS_Weather_App */ = {
 			isa = PBXGroup;
 			children = (
-				ECD45D7423542010004F1C15 /* AppDelegate.swift */,
-				ECD45D7623542010004F1C15 /* SceneDelegate.swift */,
-				ECD45D7823542010004F1C15 /* ViewController.swift */,
-				ECD45D7A23542010004F1C15 /* Main.storyboard */,
 				EC1182CF235501EF00391131 /* TO-DO */,
-				EC1182D1235503AD00391131 /* ZipCodeHelper.swift */,
+				EC1182DA235622A800391131 /* Networking */,
+				EC1182D32356222800391131 /* Delegates */,
+				EC1182D62356228200391131 /* Controllers */,
+				ECD45D7A23542010004F1C15 /* Main.storyboard */,
+				EC1182D72356228A00391131 /* Models */,
 				ECD45D7D23542011004F1C15 /* Assets.xcassets */,
 				ECD45D7F23542011004F1C15 /* LaunchScreen.storyboard */,
 				ECD45D8223542011004F1C15 /* Info.plist */,
@@ -211,6 +249,8 @@
 				ECD45D7923542010004F1C15 /* ViewController.swift in Sources */,
 				ECD45D7523542010004F1C15 /* AppDelegate.swift in Sources */,
 				ECD45D7723542010004F1C15 /* SceneDelegate.swift in Sources */,
+				EC1182D9235622A400391131 /* NetworkHelper.swift in Sources */,
+				EC1182D52356224100391131 /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
