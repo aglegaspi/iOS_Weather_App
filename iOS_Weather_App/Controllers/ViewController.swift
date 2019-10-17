@@ -9,12 +9,22 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    //MARK: - IBOUTLETS
+    @IBOutlet weak var weatherLabel: UILabel!
+    @IBOutlet weak var zipcodeTextfield: UITextField!
+    
+    //MARK: - LIFECYCLES
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
-
-
+    
+    //MARK: - IBACTIONS
+    @IBAction func enteredZipcode(_ sender: UITextField) {
+    }
+    
+    //MARK: - PRIVATE FUNCTIONS
+    
 }
 
