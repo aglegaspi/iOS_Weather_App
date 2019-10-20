@@ -10,10 +10,13 @@
 		EC1182D0235501EF00391131 /* TO-DO in Resources */ = {isa = PBXBuildFile; fileRef = EC1182CF235501EF00391131 /* TO-DO */; };
 		EC1182D2235503AD00391131 /* ZipCodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1182D1235503AD00391131 /* ZipCodeHelper.swift */; };
 		EC1182D52356224100391131 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1182D42356224100391131 /* Weather.swift */; };
-		EC1182D9235622A400391131 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1182D8235622A400391131 /* NetworkHelper.swift */; };
 		EC1182E023563E4700391131 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1182DF23563E4700391131 /* DetailViewController.swift */; };
 		EC1182E223563E5600391131 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1182E123563E5600391131 /* FavoriteViewController.swift */; };
 		EC1183042358F38E00391131 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1183032358F38D00391131 /* WeatherCell.swift */; };
+		EC56029923590B26005A9B78 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56029823590B26005A9B78 /* AppError.swift */; };
+		EC5731312359146200658089 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5731302359146200658089 /* NetworkManager.swift */; };
+		ECB783792359057500CD8634 /* WeatherAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB783782359057500CD8634 /* WeatherAPIClient.swift */; };
+		ECB7837B2359067F00CD8634 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7837A2359067F00CD8634 /* Secrets.swift */; };
 		ECD45D7523542010004F1C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD45D7423542010004F1C15 /* AppDelegate.swift */; };
 		ECD45D7723542010004F1C15 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD45D7623542010004F1C15 /* SceneDelegate.swift */; };
 		ECD45D7923542010004F1C15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD45D7823542010004F1C15 /* ViewController.swift */; };
@@ -37,10 +40,13 @@
 		EC1182CF235501EF00391131 /* TO-DO */ = {isa = PBXFileReference; lastKnownFileType = text; path = "TO-DO"; sourceTree = "<group>"; };
 		EC1182D1235503AD00391131 /* ZipCodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCodeHelper.swift; sourceTree = "<group>"; };
 		EC1182D42356224100391131 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		EC1182D8235622A400391131 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		EC1182DF23563E4700391131 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EC1182E123563E5600391131 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		EC1183032358F38D00391131 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
+		EC56029823590B26005A9B78 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		EC5731302359146200658089 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		ECB783782359057500CD8634 /* WeatherAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIClient.swift; sourceTree = "<group>"; };
+		ECB7837A2359067F00CD8634 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		ECD45D7123542010004F1C15 /* iOS_Weather_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Weather_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD45D7423542010004F1C15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECD45D7623542010004F1C15 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				EC1182D42356224100391131 /* Weather.swift */,
+				EC56029823590B26005A9B78 /* AppError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -102,7 +109,8 @@
 		EC1182DA235622A800391131 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				EC1182D8235622A400391131 /* NetworkHelper.swift */,
+				ECB783782359057500CD8634 /* WeatherAPIClient.swift */,
+				EC5731302359146200658089 /* NetworkManager.swift */,
 				EC1182D1235503AD00391131 /* ZipCodeHelper.swift */,
 			);
 			path = Networking;
@@ -138,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				EC1182CF235501EF00391131 /* TO-DO */,
+				ECB7837A2359067F00CD8634 /* Secrets.swift */,
 				EC1182DA235622A800391131 /* Networking */,
 				EC1182D32356222800391131 /* Delegates */,
 				EC1182D62356228200391131 /* Controllers */,
@@ -262,15 +271,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC5731312359146200658089 /* NetworkManager.swift in Sources */,
 				EC1182D2235503AD00391131 /* ZipCodeHelper.swift in Sources */,
 				ECD45D7923542010004F1C15 /* ViewController.swift in Sources */,
 				EC1183042358F38E00391131 /* WeatherCell.swift in Sources */,
+				ECB783792359057500CD8634 /* WeatherAPIClient.swift in Sources */,
 				ECD45D7523542010004F1C15 /* AppDelegate.swift in Sources */,
 				ECD45D7723542010004F1C15 /* SceneDelegate.swift in Sources */,
-				EC1182D9235622A400391131 /* NetworkHelper.swift in Sources */,
 				EC1182D52356224100391131 /* Weather.swift in Sources */,
+				EC56029923590B26005A9B78 /* AppError.swift in Sources */,
 				EC1182E223563E5600391131 /* FavoriteViewController.swift in Sources */,
 				EC1182E023563E4700391131 /* DetailViewController.swift in Sources */,
+				ECB7837B2359067F00CD8634 /* Secrets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

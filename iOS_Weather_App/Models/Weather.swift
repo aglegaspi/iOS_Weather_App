@@ -14,15 +14,28 @@ struct Weather: Codable {
     var currently: [Currently]
     var daily: [Daily]
     
-    static func convertDate(unixtimeInterval: TimeInterval) -> String {
-    let date = Date(timeIntervalSince1970: unixtimeInterval)
-    let dateFormatter = DateFormatter()
-    dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
-    dateFormatter.locale = NSLocale.current
-    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
-    let strDate = dateFormatter.string(from: date)
+    static func getWeather(from data: Data) throws -> Weather? {
+        // TODO: 
+        do{
+            let response = try JSONDecoder().decode(Weather.self,from: data)
+            return response
+        } catch {
+            return nil
+        }
     
-    return strDate
+    }
+    
+    //    static func convertDate(unixtimeInterval: TimeInterval) -> String {
+    //        let date = Date(timeIntervalSince1970: unixtimeInterval)
+    //        let dateFormatter = DateFormatter()
+    //        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+    //        dateFormatter.locale = NSLocale.current
+    //        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
+    //        let strDate = dateFormatter.string(from: date)
+    //
+    //        return strDate
+    //    }
+    
 }
 
 struct Currently: Codable {
@@ -33,10 +46,10 @@ struct Currently: Codable {
 
 struct Daily: Codable {
     var icon: String
-    var data: [Data]
+    var data: [WeatherData]
 }
 
-struct Data: Codable {
+struct WeatherData: Codable {
     var time: TimeInterval
     var summary: String
     var icon: String
@@ -46,8 +59,8 @@ struct Data: Codable {
     var sunsetTime: TimeInterval
     var windspeed: Double
     var precipProbability: Double
-
+    
 }
 
 
-}
+
