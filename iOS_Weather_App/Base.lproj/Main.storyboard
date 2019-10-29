@@ -73,8 +73,11 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WrJ-qm-nMT">
-                                <rect key="frame" x="158" y="497" width="97" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WrJ-qm-nMT">
+                                <rect key="frame" x="157" y="497" width="100" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="K9O-gI-Wzs"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -84,7 +87,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a Zip Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfu-al-8gQ">
                                 <rect key="frame" x="143" y="555" width="128" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="4mI-bt-RXz"/>
                                     <constraint firstAttribute="height" constant="21" id="Q7U-QR-6D6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -100,24 +102,22 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="zfu-al-8gQ" firstAttribute="leading" secondItem="WrJ-qm-nMT" secondAttribute="leading" id="1Uu-hH-lKO"/>
-                            <constraint firstItem="WrJ-qm-nMT" firstAttribute="top" secondItem="xte-wD-Yhm" secondAttribute="bottom" constant="66" id="4pU-Zf-Orx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xte-wD-Yhm" secondAttribute="trailing" id="6TZ-XU-mF7"/>
-                            <constraint firstItem="GGL-VJ-cQm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CXm-J8-l62"/>
-                            <constraint firstItem="xte-wD-Yhm" firstAttribute="top" secondItem="GGL-VJ-cQm" secondAttribute="bottom" constant="87.5" id="DAe-mp-NP8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zfu-al-8gQ" secondAttribute="trailing" constant="143" id="Ic6-GF-b6Z"/>
-                            <constraint firstItem="xte-wD-Yhm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JeV-5b-bYR"/>
-                            <constraint firstItem="xte-wD-Yhm" firstAttribute="leading" secondItem="GGL-VJ-cQm" secondAttribute="leading" id="Ll3-Oh-D1h"/>
-                            <constraint firstItem="xte-wD-Yhm" firstAttribute="centerX" secondItem="WrJ-qm-nMT" secondAttribute="centerX" id="Ne3-Oy-dM0"/>
-                            <constraint firstItem="zfu-al-8gQ" firstAttribute="top" secondItem="WrJ-qm-nMT" secondAttribute="bottom" constant="24" id="cgh-K5-9jR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GGL-VJ-cQm" secondAttribute="trailing" id="dUE-QI-jIW"/>
-                            <constraint firstItem="xte-wD-Yhm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="216" id="jMo-OC-oTi"/>
-                            <constraint firstItem="xte-wD-Yhm" firstAttribute="centerX" secondItem="zfu-al-8gQ" secondAttribute="centerX" id="p4i-cl-GG2"/>
+                            <constraint firstItem="zfu-al-8gQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0bV-wL-0iZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zfu-al-8gQ" secondAttribute="bottom" constant="237" id="7zk-Ue-dGJ"/>
+                            <constraint firstItem="xte-wD-Yhm" firstAttribute="leading" secondItem="GGL-VJ-cQm" secondAttribute="leading" id="C3k-tm-NFH"/>
+                            <constraint firstItem="zfu-al-8gQ" firstAttribute="centerX" secondItem="WrJ-qm-nMT" secondAttribute="centerX" id="Kf6-eh-ZdC"/>
+                            <constraint firstItem="zfu-al-8gQ" firstAttribute="centerX" secondItem="GGL-VJ-cQm" secondAttribute="centerX" id="MLQ-1d-lee"/>
+                            <constraint firstItem="xte-wD-Yhm" firstAttribute="top" secondItem="GGL-VJ-cQm" secondAttribute="bottom" constant="87.5" id="Ntn-BD-yxk"/>
+                            <constraint firstItem="zfu-al-8gQ" firstAttribute="centerX" secondItem="xte-wD-Yhm" secondAttribute="centerX" id="SZE-8Y-Zye"/>
+                            <constraint firstItem="zfu-al-8gQ" firstAttribute="top" secondItem="WrJ-qm-nMT" secondAttribute="bottom" constant="24" id="URo-kL-HH1"/>
+                            <constraint firstItem="WrJ-qm-nMT" firstAttribute="top" secondItem="xte-wD-Yhm" secondAttribute="bottom" constant="66" id="hL4-xo-loP"/>
+                            <constraint firstItem="xte-wD-Yhm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hg8-3A-mu3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="US9-EL-iky"/>
                     <connections>
+                        <outlet property="collectionView" destination="xte-wD-Yhm" id="vw6-tn-L2N"/>
                         <outlet property="weatherLabel" destination="GGL-VJ-cQm" id="FX0-WW-T59"/>
                         <outlet property="zipcodeTextfield" destination="WrJ-qm-nMT" id="e6V-UD-YHE"/>
                     </connections>
@@ -141,7 +141,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mQ9-fq-OWg">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="weather_cell" reuseIdentifier="WeatherCell" id="mQ9-fq-OWg" customClass="WeatherCell" customModule="iOS_Weather_App" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hsU-AR-cRS">
@@ -151,7 +151,7 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2F0-fB-8xv">
                                             <rect key="frame" x="17" y="16" width="380" height="236"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </imageView>
                                     </subviews>
                                 </collectionViewCellContentView>

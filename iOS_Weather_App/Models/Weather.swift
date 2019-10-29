@@ -8,59 +8,44 @@
 
 import Foundation
 
-
-struct Weather: Codable {
-    var timezone: String
-    var currently: [Currently]
-    var daily: [Daily]
-    
-    static func getWeather(from data: Data) throws -> Weather? {
-        // TODO: 
-        do{
-            let response = try JSONDecoder().decode(Weather.self,from: data)
-            return response
-        } catch {
-            return nil
-        }
-    
-    }
-    
-    //    static func convertDate(unixtimeInterval: TimeInterval) -> String {
-    //        let date = Date(timeIntervalSince1970: unixtimeInterval)
-    //        let dateFormatter = DateFormatter()
-    //        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
-    //        dateFormatter.locale = NSLocale.current
-    //        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
-    //        let strDate = dateFormatter.string(from: date)
-    //
-    //        return strDate
-    //    }
-    
-}
-
-struct Currently: Codable {
-    var time: TimeInterval
-    var summary: String
-    var temperature: Double
+struct WeatherWrapper: Codable {
+    let daily: Daily?
 }
 
 struct Daily: Codable {
-    var icon: String
-    var data: [WeatherData]
+    let data: [Weather]?
 }
 
-struct WeatherData: Codable {
-    var time: TimeInterval
-    var summary: String
-    var icon: String
-    var temperatureHigh: Double
-    var temperatureLow: Double
-    var sunriseTime: TimeInterval
-    var sunsetTime: TimeInterval
-    var windspeed: Double
-    var precipProbability: Double
+struct Weather: Codable {
+    let time: Int?
+    let summary, icon: String?
+    let sunriseTime, sunsetTime: Int?
+    let precipProbability: Double?
+    let precipType: String?
+    let temperatureHigh: Double?
+    let temperatureLow: Double?
+    let windSpeed: Double?
     
+    static func getWeather(from data: Data) throws -> [Weather]? {
+        do {
+            let response = try JSONDecoder().decode(WeatherWrapper.self,from: data)
+            print("we are in the get weather model")
+            print(response)
+            return response.daily?.data
+        } catch {
+            return nil
+        }
+    }
 }
 
-
-
+//    static func convertDate(unixtimeInterval: TimeInterval) -> String {
+//        let date = Date(timeIntervalSince1970: unixtimeInterval)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+//        dateFormatter.locale = NSLocale.current
+//        dateFormatter.dateFormat = "yyyy-MM-dd" //Specify your format that you want
+//        let strDate = dateFormatter.string(from: date)
+//
+//        return strDate
+//    }
+//

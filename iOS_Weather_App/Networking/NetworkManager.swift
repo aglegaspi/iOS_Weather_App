@@ -13,9 +13,9 @@ class NetworkManager {
     func performDataTask(withUrl url: URL,
                          andMethod httpMethod: HTTPMethod,
                          completionHandler: @escaping (Result<Data,AppError>) -> Void) {
+        
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
-        // TODO:
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         urlSession.dataTask(with: request) { (data, response, error) in
@@ -41,14 +41,12 @@ class NetworkManager {
                         return
                     }
                 }
-                // TODO:
                 completionHandler(.success(data))
             }
         }.resume()
     }
     
     // MARK: - Private Properties and Initializers
-    
     private let urlSession = URLSession(configuration: URLSessionConfiguration.default)
     
     private init() {}
