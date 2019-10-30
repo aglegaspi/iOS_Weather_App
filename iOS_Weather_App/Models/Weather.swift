@@ -8,15 +8,28 @@
 
 import Foundation
 
-struct WeatherWrapper: Codable {
+struct Weather: Codable {
+    let timezone: String?
     let daily: Daily?
+    
+    static func getWeather(from data: Data) throws -> Weather? {
+        do {
+            let response = try JSONDecoder().decode(Weather.self,from: data)
+            print("we are in the get weather model")
+            print(response)
+            return response
+        } catch {
+            return nil
+        }
+    }
 }
 
 struct Daily: Codable {
-    let data: [Weather]?
+    let summary, icon: String?
+    let data: [WeekOfWeather]?
 }
 
-struct Weather: Codable {
+struct WeekOfWeather: Codable {
     let time: Int?
     let summary, icon: String?
     let sunriseTime, sunsetTime: Int?
@@ -26,26 +39,17 @@ struct Weather: Codable {
     let temperatureLow: Double?
     let windSpeed: Double?
     
-    static func getWeather(from data: Data) throws -> [Weather]? {
-        do {
-            let response = try JSONDecoder().decode(WeatherWrapper.self,from: data)
-            print("we are in the get weather model")
-            print(response)
-            return response.daily?.data
-        } catch {
-            return nil
-        }
+
+    static func convertDate(convertTime: Int?) -> String {
+        guard let convertThis = convertTime else { return "Could Not Convert" }
+        let converted = TimeInterval(convertThis)
+        let date = Date(timeIntervalSince1970: converted)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "yyyy-MM-dd" //Specify your format that you want
+        let strDate = dateFormatter.string(from: date)
+
+        return strDate
     }
 }
-
-//    static func convertDate(unixtimeInterval: TimeInterval) -> String {
-//        let date = Date(timeIntervalSince1970: unixtimeInterval)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
-//        dateFormatter.locale = NSLocale.current
-//        dateFormatter.dateFormat = "yyyy-MM-dd" //Specify your format that you want
-//        let strDate = dateFormatter.string(from: date)
-//
-//        return strDate
-//    }
-//

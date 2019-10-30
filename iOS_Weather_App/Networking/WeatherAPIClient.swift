@@ -13,7 +13,7 @@ struct WeatherAPIClient {
     
     static let manager = WeatherAPIClient()
     
-    func getWeather(lat: Double, long: Double, completionHandler: @escaping (Result<[Weather]?, AppError>) -> Void) {
+    func getWeather(lat: Double, long: Double, completionHandler: @escaping (Result<Weather?, AppError>) -> Void) {
         
         let urlString = "https://api.darksky.net/forecast/\(api_key)/\(lat),\(long)"
         print(urlString)
@@ -27,7 +27,6 @@ struct WeatherAPIClient {
                 do {
                     let weather = try Weather.getWeather(from: data)
                     completionHandler(.success(weather))
-                    print(weather)
                 } catch {
                     completionHandler(.failure(.couldNotParseJSON(rawError: error)))
                 }

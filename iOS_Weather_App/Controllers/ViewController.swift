@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var weather: [Weather]? {
+    var weather: Weather? {
         didSet {
             collectionView.reloadData()
         }
@@ -34,7 +34,6 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let weatherFromOnline):
-                    print("we have retrieved weather from online")
                     self.weather = weatherFromOnline
                     self.collectionView.reloadData()
                 case .failure(let error):
@@ -57,6 +56,7 @@ extension ViewController: UITextFieldDelegate {
             case .success(let success):
                 print("we have successfully retrieved long and latitude")
                 self.loadWeather(lat: success.lat, lon: success.long)
+                self.weatherLabel.text = "The Weather has changed"
                 output = true
             case .failure(let error):
                 print(error)
@@ -67,3 +67,21 @@ extension ViewController: UITextFieldDelegate {
     
 }
 
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let weather = weather else { fatalError() }
+        return weather.daily?.data?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let weather_item = weather?.daily?.data?[indexPath.row]
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCell", for: indexPath) as? WeatherCell else { return UICollectionViewCell() }
+        
+        
+        
+        return cell
+    }
+    
+    
+}

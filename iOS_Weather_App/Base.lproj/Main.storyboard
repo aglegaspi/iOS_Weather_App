@@ -84,17 +84,19 @@
                                     <action selector="enteredZipcode:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="TGK-mO-wbA"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a Zip Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfu-al-8gQ">
-                                <rect key="frame" x="143" y="555" width="128" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Q7U-QR-6D6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather in New York City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGL-VJ-cQm">
                                 <rect key="frame" x="0.0" y="108" width="414" height="20.5"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter a Zip Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfu-al-8gQ">
+                                <rect key="frame" x="114" y="556" width="200" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Nkd-OM-8lz"/>
+                                    <constraint firstAttribute="height" constant="21" id="Q7U-QR-6D6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -102,16 +104,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="zfu-al-8gQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0bV-wL-0iZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zfu-al-8gQ" secondAttribute="bottom" constant="237" id="7zk-Ue-dGJ"/>
-                            <constraint firstItem="xte-wD-Yhm" firstAttribute="leading" secondItem="GGL-VJ-cQm" secondAttribute="leading" id="C3k-tm-NFH"/>
-                            <constraint firstItem="zfu-al-8gQ" firstAttribute="centerX" secondItem="WrJ-qm-nMT" secondAttribute="centerX" id="Kf6-eh-ZdC"/>
-                            <constraint firstItem="zfu-al-8gQ" firstAttribute="centerX" secondItem="GGL-VJ-cQm" secondAttribute="centerX" id="MLQ-1d-lee"/>
+                            <constraint firstItem="GGL-VJ-cQm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ery-2f-DiE"/>
+                            <constraint firstItem="zfu-al-8gQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="114" id="G7w-Q3-6QQ"/>
                             <constraint firstItem="xte-wD-Yhm" firstAttribute="top" secondItem="GGL-VJ-cQm" secondAttribute="bottom" constant="87.5" id="Ntn-BD-yxk"/>
-                            <constraint firstItem="zfu-al-8gQ" firstAttribute="centerX" secondItem="xte-wD-Yhm" secondAttribute="centerX" id="SZE-8Y-Zye"/>
-                            <constraint firstItem="zfu-al-8gQ" firstAttribute="top" secondItem="WrJ-qm-nMT" secondAttribute="bottom" constant="24" id="URo-kL-HH1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WrJ-qm-nMT" secondAttribute="trailing" constant="157" id="RQo-ad-cfg"/>
+                            <constraint firstItem="xte-wD-Yhm" firstAttribute="trailing" secondItem="GGL-VJ-cQm" secondAttribute="trailing" id="WR4-Bb-zoW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GGL-VJ-cQm" secondAttribute="trailing" id="cxp-AH-ooj"/>
                             <constraint firstItem="WrJ-qm-nMT" firstAttribute="top" secondItem="xte-wD-Yhm" secondAttribute="bottom" constant="66" id="hL4-xo-loP"/>
+                            <constraint firstItem="GGL-VJ-cQm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="hWL-WY-uH6"/>
                             <constraint firstItem="xte-wD-Yhm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hg8-3A-mu3"/>
+                            <constraint firstItem="zfu-al-8gQ" firstAttribute="top" secondItem="WrJ-qm-nMT" secondAttribute="bottom" constant="24" id="jab-0a-dXx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
