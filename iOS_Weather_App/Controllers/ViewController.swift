@@ -41,10 +41,9 @@ class ViewController: UIViewController {
                 }
             }
         }
-        
-        
-        
     }
+    
+    
 }
 
 extension ViewController: UITextFieldDelegate {
@@ -56,7 +55,7 @@ extension ViewController: UITextFieldDelegate {
             case .success(let success):
                 print("we have successfully retrieved long and latitude")
                 self.loadWeather(lat: success.lat, lon: success.long)
-                self.weatherLabel.text = "The Weather has changed"
+                self.weatherLabel.text = success.name
                 output = true
             case .failure(let error):
                 print(error)
