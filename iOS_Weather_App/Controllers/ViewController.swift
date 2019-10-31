@@ -25,6 +25,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         zipcodeTextfield.delegate = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
         
     //MARK: - PRIVATE FUNCTIONS
@@ -53,7 +55,6 @@ extension ViewController: UITextFieldDelegate {
         ZipCodeHelper.getLatLong(fromZipCode: textField.text ?? "") { (result) in
             switch result {
             case .success(let success):
-                print("we have successfully retrieved long and latitude")
                 self.loadWeather(lat: success.lat, lon: success.long)
                 self.weatherLabel.text = success.name
                 output = true
@@ -68,16 +69,19 @@ extension ViewController: UITextFieldDelegate {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let weather = weather else { fatalError() }
-        return weather.daily?.data?.count ?? 0
+        guard let weather = weather?.daily?.data else { return 0 }
+        print(weather.count)
+        return weather.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let weather_item = weather?.daily?.data?[indexPath.row]
-        
+        guard let weather_item = weather?.daily?.data?[indexPath.row] else { return UICollectionViewCell() }
+        print(weather_item)
+        print("the cell how has an array of data")
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCell", for: indexPath) as? WeatherCell else { return UICollectionViewCell() }
         
-        
+        print("the cell is now being populated")
+        cell.dateLabel.text = WeekOfWeather.convertDate(convertTime: weather_item.time)
         
         return cell
     }

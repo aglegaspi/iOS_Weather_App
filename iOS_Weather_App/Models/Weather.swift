@@ -15,8 +15,6 @@ struct Weather: Codable {
     static func getWeather(from data: Data) throws -> Weather? {
         do {
             let response = try JSONDecoder().decode(Weather.self,from: data)
-            print("we are in the get weather model")
-            print(response)
             return response
         } catch {
             return nil

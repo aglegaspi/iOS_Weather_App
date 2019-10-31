@@ -19,7 +19,7 @@ class iOS_Weather_AppTests1: XCTestCase {
             let data = try Data(contentsOf: url)
             let weather = try Weather.getWeather(from: data)
             
-            guard let arrWeather = weather else { return }
+            guard let arrWeather = weather?.daily?.data else { return }
             
             XCTAssert(arrWeather.count > 0, "We have \(arrWeather.count) days of weather listings")
             
