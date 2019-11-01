@@ -67,24 +67,32 @@ extension ViewController: UITextFieldDelegate {
     
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let weather = weather?.daily?.data else { return 0 }
-        print(weather.count)
         return weather.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let weather_item = weather?.daily?.data?[indexPath.row] else { return UICollectionViewCell() }
         print(weather_item)
-        print("the cell how has an array of data")
+    
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCell", for: indexPath) as? WeatherCell else { return UICollectionViewCell() }
         
         print("the cell is now being populated")
         cell.dateLabel.text = WeekOfWeather.convertDate(convertTime: weather_item.time)
-        
+        cell.weatherImage.image = UIImage(named: weather_item.icon ?? "none")
+        cell.hightempLabel.text = "High: \(String(weather_item.temperatureHigh!))"
+        cell.lowtempLabel.text = "Low: \(String(weather_item.temperatureLow!))"
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let height = view.frame.size.height
+        let width = view.frame.size.width
+        // in case you you want the cell to be 40% of your controllers view
+        return CGSize(width: width * 0.4, height: height * 0.4)
+    }
     
 }
