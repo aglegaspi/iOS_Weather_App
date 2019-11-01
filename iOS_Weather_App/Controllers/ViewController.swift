@@ -56,7 +56,7 @@ extension ViewController: UITextFieldDelegate {
             switch result {
             case .success(let success):
                 self.loadWeather(lat: success.lat, lon: success.long)
-                self.weatherLabel.text = success.name
+                self.weatherLabel.text = "Viewing weather for: " + success.name
                 output = true
             case .failure(let error):
                 print(error)
@@ -93,6 +93,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let width = view.frame.size.width
         // in case you you want the cell to be 40% of your controllers view
         return CGSize(width: width * 0.4, height: height * 0.4)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let showdetail = DetailViewController()
+        showdetail.weatherDetails = weather?.daily?.data?[indexPath.item]
+        present(showdetail, animated: true, completion: nil)
+
     }
     
 }
