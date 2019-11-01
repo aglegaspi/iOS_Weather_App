@@ -18,6 +18,7 @@ class DetailViewController: UIViewController {
     //MARK: VIEWS
     lazy var dateLabel: UILabel = {
         var label = UILabel()
+        label.font = UIFont(name: "AvenirNext-Regular", size: 12)
         label.textAlignment = .center
         label.text = "The weather on \(WeekOfWeather.convertDate(convertTime: weatherDetails.time)) for \(selectedCity)"
         return label
@@ -42,14 +43,76 @@ class DetailViewController: UIViewController {
     
     lazy var summaryLabel: UILabel = {
         var label = UILabel()
-        label.backgroundColor = .red
+        label.font = UIFont(name: "AvenirNext-Regular", size: 10)
+        label.textAlignment = .center
         label.text = weatherDetails.summary
         return label
     }()
     
-    lazy var detailsStackView: UIStackView = {
-        var stackview = UIStackView()
-        return stackview
+    /// stack view
+    lazy var v1: UILabel = {
+        var label = UILabel()
+        label.font = UIFont(name: "AvenirNext-Regular", size: 10)
+        label.text = "High: \(weatherDetails.temperatureHigh ?? 0) ◦F"
+        return label
+    }()
+    
+    lazy var v2: UILabel = {
+        var label = UILabel()
+        label.font = UIFont(name: "AvenirNext-Regular", size: 10)
+        label.text = "Low: \(weatherDetails.temperatureLow ?? 0) ◦F"
+        return label
+        
+    }()
+    
+    lazy var v3: UILabel = {
+        var label = UILabel()
+        label.font = UIFont(name: "AvenirNext-Regular", size: 10)
+        label.text = "Sunrise: \(weatherDetails.sunriseTime ?? 0)"
+        return label
+        
+    }()
+    
+    lazy var v4: UILabel = {
+        var label = UILabel()
+        label.font = UIFont(name: "AvenirNext-Regular", size: 10)
+        label.text = "Sunset: \(weatherDetails.sunsetTime ?? 0)"
+        return label
+        
+    }()
+    
+    lazy var v5: UILabel = {
+        var label = UILabel()
+        label.font = UIFont(name: "AvenirNext-Regular", size: 10)
+        label.text = "Windspeed: \(weatherDetails.windSpeed ?? 0) MPH"
+        return label
+        
+    }()
+    
+    lazy var v6: UILabel = {
+        var label = UILabel()
+        label.font = UIFont(name: "AvenirNext-Regular", size: 10)
+        label.text = "Precipitation(Inches): \(weatherDetails.precipProbability ?? 0)"
+        return label
+        
+    }()
+    
+    lazy var stackView: UIStackView = {
+        let s = UIStackView(frame: CGRect(x: 100, y: 510, width: 150, height: 150))
+        s.axis = .vertical
+        s.distribution = .fillEqually
+        s.alignment = .fill
+        s.spacing = 0
+        s.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        s.addArrangedSubview(self.v1)
+        s.addArrangedSubview(self.v2)
+        s.addArrangedSubview(self.v3)
+        s.addArrangedSubview(self.v4)
+        s.addArrangedSubview(self.v5)
+        s.addArrangedSubview(self.v6)
+        
+        return s
     }()
     
     //MARK: LIFECYCLES
@@ -58,7 +121,6 @@ class DetailViewController: UIViewController {
         view.backgroundColor = .yellow
         loadSubviews()
         loadConstraints()
-        
     }
     
     //MARK: PRIVATE FUNCTIONS
@@ -66,13 +128,14 @@ class DetailViewController: UIViewController {
         view.addSubview(dateLabel)
         view.addSubview(cityImage)
         view.addSubview(summaryLabel)
+        view.addSubview(stackView)
     }
     
     private func loadConstraints() {
-        let constraints = [constrainDateLabel(),constrainCityImage(),constrainsummaryLabel()]
+        let constraints = [constrainDateLabel(),constrainCityImage(),constrainSummaryLabel()]
         constraints.forEach { $0 }
     }
-        
+    
     
     //MARK: CONSTRAINTS
     private func constrainDateLabel() {
@@ -93,7 +156,7 @@ class DetailViewController: UIViewController {
         ])
     }
     
-    private func constrainsummaryLabel() {
+    private func constrainSummaryLabel() {
         summaryLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             summaryLabel.topAnchor.constraint(equalTo: cityImage.safeAreaLayoutGuide.bottomAnchor, constant: 10),
@@ -102,8 +165,17 @@ class DetailViewController: UIViewController {
         ])
     }
     
+    //    private func constrainStackView() {
+    //        stackView.translatesAutoresizingMaskIntoConstraints = false
+    //        NSLayoutConstraint.activate([
+    //            stackView.topAnchor.constraint(equalTo: summaryLabel.safeAreaLayoutGuide.bottomAnchor, constant: 5),
+    //            stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+    //            stackView.widthAnchor.constraint(equalToConstant: 200)
+    //        ])
+    //    }
+    
     
     //MARK: OBJC FUNCTIONS
     
-
+    
 }

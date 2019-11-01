@@ -17,6 +17,8 @@
 		EC4EC387236CB0420037744E /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4EC386236CB0420037744E /* ImageHelper.swift */; };
 		EC4EC389236CB7EA0037744E /* ImageAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4EC388236CB7EA0037744E /* ImageAPIClient.swift */; };
 		EC4EC38B236CB8080037744E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4EC38A236CB8080037744E /* Image.swift */; };
+		EC4EC38D236CD33B0037744E /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4EC38C236CD33B0037744E /* PersistenceHelper.swift */; };
+		EC4EC38F236CD3B30037744E /* ImagePersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4EC38E236CD3B30037744E /* ImagePersistenceHelper.swift */; };
 		EC56029923590B26005A9B78 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56029823590B26005A9B78 /* AppError.swift */; };
 		EC5731312359146200658089 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5731302359146200658089 /* NetworkManager.swift */; };
 		ECB783792359057500CD8634 /* WeatherAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB783782359057500CD8634 /* WeatherAPIClient.swift */; };
@@ -60,6 +62,8 @@
 		EC4EC386236CB0420037744E /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		EC4EC388236CB7EA0037744E /* ImageAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIClient.swift; sourceTree = "<group>"; };
 		EC4EC38A236CB8080037744E /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		EC4EC38C236CD33B0037744E /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		EC4EC38E236CD3B30037744E /* ImagePersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePersistenceHelper.swift; sourceTree = "<group>"; };
 		EC56029823590B26005A9B78 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		EC5731302359146200658089 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		ECB783782359057500CD8634 /* WeatherAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIClient.swift; sourceTree = "<group>"; };
@@ -152,6 +156,15 @@
 			path = iOS_Weather_AppTests1;
 			sourceTree = "<group>";
 		};
+		EC4EC390236CD3B70037744E /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				EC4EC38C236CD33B0037744E /* PersistenceHelper.swift */,
+				EC4EC38E236CD3B30037744E /* ImagePersistenceHelper.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		ECD45D6823542010004F1C15 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +189,7 @@
 				EC1182CF235501EF00391131 /* TO-DO */,
 				ECB7837A2359067F00CD8634 /* Secrets.swift */,
 				ECD45D7A23542010004F1C15 /* Main.storyboard */,
+				EC4EC390236CD3B70037744E /* Persistence */,
 				EC1182DA235622A800391131 /* Networking */,
 				EC1182D32356222800391131 /* Delegates */,
 				EC1182D62356228200391131 /* Controllers */,
@@ -313,6 +327,7 @@
 				EC4EC38B236CB8080037744E /* Image.swift in Sources */,
 				EC1183042358F38E00391131 /* WeatherCell.swift in Sources */,
 				ECB783792359057500CD8634 /* WeatherAPIClient.swift in Sources */,
+				EC4EC38D236CD33B0037744E /* PersistenceHelper.swift in Sources */,
 				ECD45D7523542010004F1C15 /* AppDelegate.swift in Sources */,
 				ECD45D7723542010004F1C15 /* SceneDelegate.swift in Sources */,
 				EC1182D52356224100391131 /* Weather.swift in Sources */,
@@ -320,6 +335,7 @@
 				EC56029923590B26005A9B78 /* AppError.swift in Sources */,
 				EC1182E223563E5600391131 /* FavoriteViewController.swift in Sources */,
 				EC1182E023563E4700391131 /* DetailViewController.swift in Sources */,
+				EC4EC38F236CD3B30037744E /* ImagePersistenceHelper.swift in Sources */,
 				ECB7837B2359067F00CD8634 /* Secrets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
