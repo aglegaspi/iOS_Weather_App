@@ -16,6 +16,9 @@ class ViewController: UIViewController {
         }
     }
     
+    var cityname = ""
+    var images = [Image]()
+    
     //MARK: - IBOUTLETS
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var zipcodeTextfield: UITextField!
@@ -27,8 +30,9 @@ class ViewController: UIViewController {
         zipcodeTextfield.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
-    }
         
+    }
+    
     //MARK: - PRIVATE FUNCTIONS
     
     private func loadWeather(lat: Double, lon: Double) {
@@ -38,6 +42,20 @@ class ViewController: UIViewController {
                 case .success(let weatherFromOnline):
                     self.weather = weatherFromOnline
                     self.collectionView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    private func loadImage(loadImageForCity: String) {
+        
+        ImageAPIClient.manager.getImages(cityname: loadImageForCity) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let success):
+                    self.images = success!
                 case .failure(let error):
                     print(error)
                 }
@@ -56,7 +74,9 @@ extension ViewController: UITextFieldDelegate {
             switch result {
             case .success(let success):
                 self.loadWeather(lat: success.lat, lon: success.long)
-                self.weatherLabel.text = "Viewing weather for: " + success.name
+                self.cityname = success.name
+                self.weatherLabel.text = "Viewing weather for: " + self.cityname
+                self.loadImage(loadImageForCity: self.cityname.lowercased().replacingOccurrences(of: " ", with: "+"))
                 output = true
             case .failure(let error):
                 print(error)
@@ -76,7 +96,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let weather_item = weather?.daily?.data?[indexPath.row] else { return UICollectionViewCell() }
         print(weather_item)
-    
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCell", for: indexPath) as? WeatherCell else { return UICollectionViewCell() }
         
         print("the cell is now being populated")
@@ -88,7 +108,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         let height = view.frame.size.height
         let width = view.frame.size.width
         // in case you you want the cell to be 40% of your controllers view
@@ -99,8 +119,15 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         
         let showdetail = DetailViewController()
         showdetail.weatherDetails = weather?.daily?.data?[indexPath.item]
+        showdetail.selectedCity = cityname
+        
+        if images.count != 0 {
+            showdetail.image = images[0].imgURL!
+        } else {
+            showdetail.image = "https://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg"
+        }
         present(showdetail, animated: true, completion: nil)
-
+        
     }
     
 }
