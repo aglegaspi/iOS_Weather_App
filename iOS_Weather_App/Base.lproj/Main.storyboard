@@ -152,7 +152,7 @@
         <!--Favorite View Controller-->
         <scene sceneID="7Xy-GI-yw8">
             <objects>
-                <viewController id="Mve-pV-jLz" userLabel="Favorite View Controller" sceneMemberID="viewController">
+                <viewController id="Mve-pV-jLz" userLabel="Favorite View Controller" customClass="FavoriteViewController" customModule="iOS_Weather_App" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="TwM-4C-cpR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -164,7 +164,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="weather_cell" reuseIdentifier="WeatherCell" id="mQ9-fq-OWg" customClass="WeatherCell" customModule="iOS_Weather_App" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="weather_cell" reuseIdentifier="WeatherCell" id="mQ9-fq-OWg" userLabel="FavoriteCell" customClass="FavoriteCell">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hsU-AR-cRS">
@@ -174,15 +174,21 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2F0-fB-8xv">
                                             <rect key="frame" x="17" y="16" width="380" height="236"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </imageView>
                                     </subviews>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="414" height="270"/>
+                                <connections>
+                                    <outlet property="favoriteImage" destination="2F0-fB-8xv" id="vkW-UG-5xn"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                     </collectionView>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="QQb-kL-0xQ"/>
+                    <connections>
+                        <outlet property="collectionView" destination="TwM-4C-cpR" id="HFJ-bo-Na9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWl-zt-Oep" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

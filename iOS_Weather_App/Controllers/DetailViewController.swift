@@ -125,7 +125,7 @@ class DetailViewController: UIViewController {
     
     lazy var saveButton: UIButton = {
         var button = UIButton()
-        button.setTitle("Save City", for: .normal)
+        button.setTitle("Save", for: .normal)
         button.backgroundColor = .purple
         button.addTarget(self, action: #selector(saveButtonPressed), for: .touchDown)
         return button
@@ -146,10 +146,11 @@ class DetailViewController: UIViewController {
         view.addSubview(summaryLabel)
         view.addSubview(stackView)
         view.addSubview(closeButton)
+        view.addSubview(saveButton)
     }
     
     private func loadConstraints() {
-        let constraints = [constrainDateLabel(),constrainCityImage(),constrainSummaryLabel(),constrainCloseButton()]
+        let constraints = [constrainDateLabel(),constrainCityImage(),constrainSummaryLabel(),constrainCloseButton(), constrainSaveButton()]
         constraints.forEach { $0 }
     }
     
@@ -199,7 +200,17 @@ class DetailViewController: UIViewController {
             closeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             closeButton.heightAnchor.constraint(equalToConstant: 20),
             closeButton.widthAnchor.constraint(equalToConstant: 50)
-            //closeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10)
+        ])
+    }
+    
+    private func constrainSaveButton() {
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            saveButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10),
+            saveButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            saveButton.heightAnchor.constraint(equalToConstant: 20),
+            saveButton.widthAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -211,6 +222,25 @@ class DetailViewController: UIViewController {
     }
     
     @objc func saveButtonPressed() {
+        var currentFavorites = [Image]()
+        do {
+            currentFavorites = try ImagePersistenceHelper.manager.getImages()
+        } catch {
+            print(error)
+        }
         
+        if !currentFavorites.contains(obj: image) {
+            //ImagePersistenceHelper.manager.save(newImage: image)
+            print("save the image")
+        } else {
+            print("this image already exists")
+        }
+    }
+}
+
+
+extension Array {
+    func contains<T>(obj: T) -> Bool where T : Equatable {
+        return self.filter({$0 as? T == obj}).count > 0
     }
 }
