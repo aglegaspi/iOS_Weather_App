@@ -115,6 +115,22 @@ class DetailViewController: UIViewController {
         return s
     }()
     
+    lazy var closeButton: UIButton = {
+        var button = UIButton()
+        button.setTitle("Close", for: .normal)
+        button.backgroundColor = .purple
+        button.addTarget(self, action: #selector(closeButtonPressed), for: .touchDown)
+        return button
+    }()
+    
+    lazy var saveButton: UIButton = {
+        var button = UIButton()
+        button.setTitle("Save City", for: .normal)
+        button.backgroundColor = .purple
+        button.addTarget(self, action: #selector(saveButtonPressed), for: .touchDown)
+        return button
+    }()
+    
     //MARK: LIFECYCLES
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,10 +145,11 @@ class DetailViewController: UIViewController {
         view.addSubview(cityImage)
         view.addSubview(summaryLabel)
         view.addSubview(stackView)
+        view.addSubview(closeButton)
     }
     
     private func loadConstraints() {
-        let constraints = [constrainDateLabel(),constrainCityImage(),constrainSummaryLabel()]
+        let constraints = [constrainDateLabel(),constrainCityImage(),constrainSummaryLabel(),constrainCloseButton()]
         constraints.forEach { $0 }
     }
     
@@ -174,8 +191,26 @@ class DetailViewController: UIViewController {
     //        ])
     //    }
     
+    private func constrainCloseButton() {
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10),
+            closeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            closeButton.heightAnchor.constraint(equalToConstant: 20),
+            closeButton.widthAnchor.constraint(equalToConstant: 50)
+            //closeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10)
+        ])
+    }
+    
     
     //MARK: OBJC FUNCTIONS
     
+    @objc func closeButtonPressed() {
+        dismiss(animated: true, completion: nil)
+    }
     
+    @objc func saveButtonPressed() {
+        
+    }
 }

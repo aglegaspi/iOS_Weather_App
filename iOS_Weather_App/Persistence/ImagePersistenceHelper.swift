@@ -8,23 +8,15 @@
 
 import Foundation
 
-struct FavoritePersistenceHelper {
-    static let manager = FavoritePersistenceHelper()
+struct ImagePersistenceHelper {
+    static let manager = ImagePersistenceHelper()
     
-    func save(newFave: Image) throws {
-        try persistenceHelper.save(newElement: newFave)
+    func save(newImage: Image) throws {
+        try persistenceHelper.save(newElement: newImage)
     }
     
-    func getBestSellers() throws -> [Image] {
+    func getImages() throws -> [Image] {
         return try persistenceHelper.getObjects()
-    }
-    
-    func deleteBestSellers(date: Date) throws {
-        do {
-//            let bestSeller =  try getBestSellers()
-//            let newBestSellers = bestSeller.filter { $0.date != date}
-//            try persistenceHelper.replace(elements: newBestSellers)
-        }
     }
     
     private let persistenceHelper = PersistenceHelper<Image>(fileName: "Images.plist")
