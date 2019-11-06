@@ -88,6 +88,7 @@ extension ViewController: UITextFieldDelegate {
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let weather = weather?.daily?.data else { return 0 }
         return weather.count
@@ -121,11 +122,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         showdetail.weatherDetails = weather?.daily?.data?[indexPath.item]
         showdetail.selectedCity = cityname
         
-        if images.count != 0 {
-            showdetail.image = images[0].imgURL!
-        } else {
-            showdetail.image = "https://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg"
-        }
+        showdetail.myImage = images[indexPath.row]
         present(showdetail, animated: true, completion: nil)
         
     }

@@ -60,3 +60,7 @@ Bonus Ideas
 - Allow the user to toggle whether the displays should be US or Metric. Persist this to UserDefaults
 - Add animations
 
+###########
+
+turn IMAGE from Weather Cell into Data
+

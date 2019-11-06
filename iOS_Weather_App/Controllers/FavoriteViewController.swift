@@ -10,45 +10,54 @@ import UIKit
 
 class FavoriteViewController: UIViewController {
     
-    var favoriteImages = [Image]() {
+    var favorites = [Favorite]() {
         didSet {
             collectionView.reloadData()
         }
     }
-
+    
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadFavoriteImages()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        collectionView.reloadData()
     }
     
     private func loadFavoriteImages() {
-        
+        print("load images function")
+        do {
+            favorites = try FavoritePersistenceHelper.manager.getFavorites()
+        } catch {
+            print("FVC could not load images: \(error)")
+        }
     }
+    
     
 }
 
 extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return favoriteImages.count
+        print(favorites.count)
+        return favorites.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let image = favoriteImages[indexPath.item]
+        let image = favorites[indexPath.item]
+        print(image)
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteCell", for: indexPath) as? FavoriteCell else { return UICollectionViewCell() }
-        
-        ImageHelper.shared.getImage(urlStr: image.imgURL!) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success (let image):
-                    cell.favoriteImage.image = image
-                case .failure(let error):
-                    print(error)
-                }
-            }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteCell", for: indexPath) as? FavoriteCell else {
+            return UICollectionViewCell()
         }
+        
+        cell.favoriteImage.image = UIImage(data: image.imageData)
         
         return cell
     }

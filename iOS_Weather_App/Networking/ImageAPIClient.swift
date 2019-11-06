@@ -27,10 +27,6 @@ struct ImageAPIClient {
             DispatchQueue.main.async {
                 switch result {
                     
-                case let .failure(error):
-                    completionHandler(.failure(error))
-                    return
-                    
                 case let .success(data):
                     do {
                         let response = try Image.getImage(from: data)
@@ -39,10 +35,16 @@ struct ImageAPIClient {
                     catch {
                         completionHandler(.failure(.couldNotParseJSON(rawError: error)))
                     }
+                    
+                case let .failure(error):
+                    completionHandler(.failure(error))
+                    return
+                    
                 }
             }
         }
     }
+    
     
     private init() {}
 }

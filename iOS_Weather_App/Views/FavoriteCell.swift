@@ -9,6 +9,7 @@
 import UIKit
 
 class FavoriteCell: UICollectionViewCell {
+    
     @IBOutlet weak var favoriteImage: UIImageView!
     
 }

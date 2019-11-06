@@ -13,7 +13,8 @@ class DetailViewController: UIViewController {
     //MARK: PROPERTIES
     var weatherDetails: WeekOfWeather!
     var selectedCity = ""
-    var image = ""
+    var myImage: Image!
+    var imageToSave = UIImage()
     
     //MARK: VIEWS
     lazy var dateLabel: UILabel = {
@@ -27,11 +28,15 @@ class DetailViewController: UIViewController {
     lazy var cityImage: UIImageView = {
         var iv = UIImageView()
         
-        ImageHelper.shared.getImage(urlStr: image) { (result) in
+        ImageHelper.shared.getImage(urlStr: myImage.imgURL ?? "https://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg") { (result) in
             DispatchQueue.main.async {
+                
                 switch result {
+                    
                 case .success (let image):
                     iv.image = image
+                    self.imageToSave = image
+                    print("this is the value for image to save: \(self.imageToSave)")
                 case .failure(let error):
                     print(error)
                 }
@@ -222,16 +227,25 @@ class DetailViewController: UIViewController {
     }
     
     @objc func saveButtonPressed() {
-        var currentFavorites = [Image]()
+        
+        var currentFavorites = [Favorite]()
+        print("saving item")
+        
+        let saveAsFavorite = Favorite(imageData: imageToSave.jpegData(compressionQuality: 1)!, imageID: myImage.imgID, date: Date())
+        
         do {
-            currentFavorites = try ImagePersistenceHelper.manager.getImages()
+            currentFavorites = try FavoritePersistenceHelper.manager.getFavorites()
+            print("retrived favorites")
         } catch {
             print(error)
         }
         
-        if !currentFavorites.contains(obj: image) {
-            //ImagePersistenceHelper.manager.save(newImage: image)
-            print("save the image")
+        if !currentFavorites.contains(where: { $0.imageID == saveAsFavorite.imageID}) {
+            do {
+                try FavoritePersistenceHelper.manager.save(newFavorite: saveAsFavorite)
+            } catch {
+                print(error)
+            }
         } else {
             print("this image already exists")
         }
@@ -239,8 +253,8 @@ class DetailViewController: UIViewController {
 }
 
 
-extension Array {
-    func contains<T>(obj: T) -> Bool where T : Equatable {
-        return self.filter({$0 as? T == obj}).count > 0
-    }
-}
+//extension Array {
+//    func contains<T>(obj: T) -> Bool where T : Equatable {
+//        return self.filter({$0 as? T == obj}).count > 0
+//    }
+//}

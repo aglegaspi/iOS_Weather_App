@@ -13,9 +13,11 @@ struct ImageWrapper: Codable {
 }
 
 struct Image: Codable {
+    let imgID: Int
     let imgURL: String?
 
     enum CodingKeys: String, CodingKey {
+        case imgID = "id"
         case imgURL = "webformatURL"
     }
     
